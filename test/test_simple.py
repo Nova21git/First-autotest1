@@ -1,13 +1,13 @@
-from playwright.sync_api import Page,expect
+from playwright.sync_api import Page
+from pages.simple_page import SimplePage
 
 def test_simple_exists(page: Page):
-    page.goto('https://www.qa-practice.com/elements/button/simple')
-    button = page.locator('#submit-id-submit')
-    expect(button).to_be_visible()
+    simpl_page = SimplePage(page)
+    simpl_page.open()
+    simpl_page.check_button_exists()
 
 def test_simple_click(page: Page):
-    page.goto('https://www.qa-practice.com/elements/button/simple')
-    button = page.locator('#submit-id-submit')
-    button.click()
-    result = page.locator('#result-text')
-    expect(result).to_have_text('Submitted')
+    simpl_page = SimplePage(page)
+    simpl_page.open()
+    simpl_page.click_button()
+    simpl_page.check_result_text_is_('Submitted')
