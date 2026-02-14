@@ -1,6 +1,7 @@
 from playwright.sync_api import Page
 from pages.simple_page import SimplePage
-
+import allure
+@allure.feature('Simple button')
 def test_simple_exists(page: Page):
     simpl_page = SimplePage(page)
     simpl_page.open()

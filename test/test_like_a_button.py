@@ -1,6 +1,7 @@
 from playwright.sync_api import Page
 from pages.like_a_button import LikeAButton
-
+import allure
+@allure.feature('Simple like a button')
 def test_like_a_button_exists(page: Page):
     like_a_button = LikeAButton(page)
     like_a_button.open()
